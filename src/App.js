@@ -1,17 +1,20 @@
+import { useRef, useState } from 'react';
 import './App.css';
 
-function App() {
+export default function App() {
+  const [data, setData] = useState('');
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(`.netlify/functions/hello`);
+      const tempData = await response.json();
+      setData(tempData);
+    })();
+  },[]);
   return (
     <div>
-      jay sia raam
-      <br />
-      jay raghubeer gosai
-      <br />
-      namah parvati pataye
-      <br />
-      jay sia raam from netlify
+      Hello World!!!
+      <div>(data.message)</div>
     </div>
   );
 }
-
-export default App;
