@@ -7,6 +7,8 @@ export default function App() {
   useEffect(() => {
     (async () => {
       const response = await fetch(`.netlify/functions/hello`);
+      method: "post",
+      body:JSON.stringify({name:"hello world"})
       const tempData = await response.json();
       setData(tempData);
     })();
